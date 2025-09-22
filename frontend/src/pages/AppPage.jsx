@@ -1,11 +1,11 @@
 import React from 'react'
 
 const AppPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+    return (
+        <div>
+            AppPage
+        </div>
+    )
 }
 
 export default AppPage
