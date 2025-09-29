@@ -8,7 +8,9 @@ const Home = () => {
         className='py-5 px-10 bg-gradient-to-r from-green-500 to-blue-600 font-bold text-xl rounded-4xl cursor-pointer'
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
       >
         <Link to='/app'>Lets Try</Link>
       </motion.h2>
