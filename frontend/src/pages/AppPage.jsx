@@ -16,14 +16,27 @@ const AppPage = () => {
                 Write Quote
             </h1>
 
-            <div className=' flex justify-center mt-10'>
+            {/*create form*/}
+
+            <div className=' max-w-xl mx-auto gap-4 mt-10 flex'>
                 <input type="text" placeholder='Enter text'
-                className='min-w-xl border-white border-2 px-4 py-2 shadow-lg rounded-lg bg-gray-800'
+                    className='w-full border-white border-2 px-4 py-2 shadow-lg rounded-lg bg-gray-800'
                 />
-                <button className='ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-300'>
+                <button className='px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-300'>
                     Add
                 </button>
             </div>
+
+            {/*quotes list*/}
+
+            <div className='max-w-xl mx-auto space-y-10 mt-15'>
+                {quotes.map((q) => (
+                    <div className='flex items-center justify-between w-full p-4 text-white bg-white/10 my-10 rounded-xl shadow-xl' key={q.id}>
+                        <p>{q.text}</p>
+                    </div>
+                ))}
+            </div>
+
         </div>
     )
 }
