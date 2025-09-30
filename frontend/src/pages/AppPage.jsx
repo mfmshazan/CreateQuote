@@ -10,6 +10,14 @@ const AppPage = () => {
     const [editId, setEditId] = useState(null);
     const [editText, setEditText] = useState("");
 
+    const startEdit = () => {
+        console.log("Edit")
+    }
+
+    const handleDelete = (id) => {
+        console.log(id)
+    }
+    
     return (
         <div className='min-h-screen bg-gray-900 dark:text-white py-12 px-4 md:px-10'>
             <h1 className='text-3xl font-bold text-center'>
@@ -34,10 +42,10 @@ const AppPage = () => {
                     <div className='flex items-center justify-between w-full p-4 text-white text-lg bg-white/10 my-10 rounded-xl shadow-xl' key={q.id}>
                         <p>{q.text}</p>
                         <div className='flex gap-4'>
-                            <button className='text-white bg-blue-500 py-1 px-2 rounded-sm cursor-pointer gap-1 flex'>
+                            <button className='text-white bg-blue-500 py-1 px-2 rounded-sm cursor-pointer gap-1 flex' onClick={startEdit}>
                                 Edit
                             </button>
-                            <button  className='text-white bg-red-400 p-1 px-2 rounded-sm cursor-pointer gap-1 flex'>
+                            <button  className='text-white bg-red-400 p-1 px-2 rounded-sm cursor-pointer gap-1 flex' onClick={() => handleDelete(q.id)}>
                                 Delete
                             </button>
                         </div>
