@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 
 //Define a model
-
 const quoteSchema = new mongoose.Schema(
     {
         text:{
@@ -57,8 +56,51 @@ app.post("/api/quotes", async(req, res) => {
         res.status(400).json(created);
     }
     catch(err){
-
+        res.status(500).json({error:"There is no quote to post"});
     }
+});
+
+//Put a quote
+app.put("/api/quotes/:id", async (req,res) => {
+    
+    const {text} = req.body;
+    const {id} = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(500).json({error:"There is no valid Id"});
+    }
+
+    if(!text || !text.trim()){
+        return res.status(201).json({error:"There is no text to update"});
+    }
+    
+    const updated = await Quote.findByIdAndUpdate(id,
+        {text: text.trim()},
+        {new: true}
+    );
+
+    if(!updated){
+        return res.status(404).json({error:"Quote not found"})
+    }
+    res.json(updated);
+    
+});
+
+//Delete a quote
+app.delete("/api/quotes/:id", async (req, res) => {
+
+  const { id } = req.params;
+
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    res.status(400).json({error: "There is no valid ID"});
+  }
+
+  const deleted = await Quote.findByIdAndDelete(id);
+
+  if(!deleted){
+    return res.status(404).json({error: "Quote not found"});
+  }
+  res.json(deleted);
 })
 
 
