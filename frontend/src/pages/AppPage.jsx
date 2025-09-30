@@ -31,12 +31,19 @@ const AppPage = () => {
 
             <div className='max-w-xl mx-auto space-y-10 mt-15'>
                 {quotes.map((q) => (
-                    <div className='flex items-center justify-between w-full p-4 text-white bg-white/10 my-10 rounded-xl shadow-xl' key={q.id}>
+                    <div className='flex items-center justify-between w-full p-4 text-white text-lg bg-white/10 my-10 rounded-xl shadow-xl' key={q.id}>
                         <p>{q.text}</p>
+                        <div className='flex gap-4'>
+                            <button className='text-white bg-blue-500 py-1 px-2 rounded-sm cursor-pointer gap-1 flex'>
+                                Edit
+                            </button>
+                            <button  className='text-white bg-red-400 p-1 px-2 rounded-sm cursor-pointer gap-1 flex'>
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
-
         </div>
     )
 }
